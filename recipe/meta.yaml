@@ -1,5 +1,5 @@
 {% set name = "pillow-heif" %}
-{% set version = "0.22.0" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pillow_heif-{{ version }}.tar.gz
-  sha256: 61d473929340d3073722f6316b7fbbdb11132faa6bac0242328e8436cc55b39a
+  sha256: 0df7a1fb29bd55bc77fd286195eeb02604e356a5da3d5e8786129b91263b99e2
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<39]
   skip: true  # [win]
@@ -46,7 +46,6 @@ about:
   license: GPL-2.0-or-later AND EPL-2.0 AND BSD-3-Clause
   license_file:
     - LICENSE.txt
-    - tests/images/heif_other/avif/LICENSE.txt
     - tests/images/heif_other/nokia/COPYRIGHT.txt
 
 extra:
