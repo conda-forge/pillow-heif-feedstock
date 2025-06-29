@@ -11,7 +11,14 @@ source:
 
 build:
   number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  script: |
+    {% if win %}
+    :: libheif on Windows ships heif.lib, but the build looks for libheif.lib
+    if not exist "%LIBRARY_LIB%\libheif.lib" (
+      copy "%LIBRARY_LIB%\heif.lib" "%LIBRARY_LIB%\libheif.lib"
+    )
+    {% endif %}
+    {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<39]
 
 requirements:
