@@ -46,7 +46,6 @@ about:
   license: GPL-2.0-or-later AND EPL-2.0 AND BSD-3-Clause
   license_file:
     - LICENSE.txt
-    - tests/images/heif_other/avif/LICENSE.txt
     - tests/images/heif_other/nokia/COPYRIGHT.txt
 
 extra:
