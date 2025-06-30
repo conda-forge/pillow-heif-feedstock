@@ -10,10 +10,16 @@ source:
   sha256: 0df7a1fb29bd55bc77fd286195eeb02604e356a5da3d5e8786129b91263b99e2
 
 build:
-  number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 1
+  script: |
+    {% if win %}
+    :: libheif on Windows ships heif.lib, but the build looks for libheif.lib
+    if not exist "%LIBRARY_LIB%\libheif.lib" (
+      copy "%LIBRARY_LIB%\heif.lib" "%LIBRARY_LIB%\libheif.lib"
+    )
+    {% endif %}
+    {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<39]
-  skip: true  # [win]
 
 requirements:
   build:
