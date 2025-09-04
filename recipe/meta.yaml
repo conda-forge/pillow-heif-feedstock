@@ -10,7 +10,7 @@ source:
   sha256: 6c0c5f81a780185bbddc56e0d5537c53aa6cb5fb6018f5a60534a47c53f5455d
 
 build:
-  number: 0
+  number: 1
   script: |
     {% if win %}
     :: libheif on Windows ships heif.lib, but the build looks for libheif.lib
