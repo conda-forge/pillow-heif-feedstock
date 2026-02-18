@@ -1,5 +1,5 @@
 {% set name = "pillow-heif" %}
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pillow_heif-{{ version }}.tar.gz
-  sha256: dd5c818dfb4ec39a5093127f8c07bbb32ca81dbbd29c4ebeffd23222ccc76aa9
+  sha256: 29be44d636269e2d779b4aec629bc056ec7260b734a16b4d3bb284c49c200274
 
 build:
   number: 0
