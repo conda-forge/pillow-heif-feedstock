@@ -38,10 +38,13 @@ requirements:
     - pillow >=10.1.0
 
 test:
+  files:
+    - run_test.py
   imports:
     - pillow_heif
   commands:
     - pip check
+    - python run_test.py
   requires:
     - pip
 
