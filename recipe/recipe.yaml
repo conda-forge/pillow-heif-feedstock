@@ -1,0 +1,69 @@
+schema_version: 1
+
+context:
+  name: pillow-heif
+  version: "1.3.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pillow_heif-${{ version }}.tar.gz
+  sha256: af8d2bda85e395677d5bb50d7bda3b5655c946cc95b913b5e7222fabacbb467f
+
+build:
+  number: 1
+  skip:
+    - match(python, "<3.9")
+  script:
+    - if: win
+      then: if not exist "%LIBRARY_LIB%\libheif.lib" copy "%LIBRARY_LIB%\heif.lib" "%LIBRARY_LIB%\libheif.lib"
+    - python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  build:
+    - ${{ compiler("c") }}
+    - ${{ stdlib("c") }}
+    - if: build_platform != target_platform
+      then:
+        - cross-python_${{ target_platform }}
+        - python
+  host:
+    - libheif
+    - pip
+    - python
+    - setuptools >=67.8
+    - wheel
+  run:
+    - pillow >=10.1.0
+    - python
+
+tests:
+  - python:
+      imports:
+        - pillow_heif
+  - script:
+      - pip check
+      - python run_test.py
+    files:
+      recipe:
+        - run_test.py
+    requirements:
+      run:
+        - pip
+        - python
+
+about:
+  homepage: https://github.com/bigcat88/pillow_heif
+  repository: https://github.com/bigcat88/pillow_heif
+  summary: Python interface for libheif library
+  license: GPL-2.0-or-later AND EPL-2.0 AND BSD-3-Clause
+  license_file:
+    - LICENSE.txt
+    - tests/images/heif_other/nokia/COPYRIGHT.txt
+
+extra:
+  recipe-maintainers:
+    - jeongseok-meta
+    - rxm7706
