@@ -58,7 +58,7 @@ about:
   homepage: https://github.com/bigcat88/pillow_heif
   repository: https://github.com/bigcat88/pillow_heif
   summary: Python interface for libheif library
-  license: GPL-2.0-or-later AND EPL-2.0 AND BSD-3-Clause
+  license: BSD-3-Clause
   license_file:
     - LICENSE.txt
     - tests/images/heif_other/nokia/COPYRIGHT.txt
