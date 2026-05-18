@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pillow-heif-fee
 
 Home: https://github.com/bigcat88/pillow_heif
 
-Package license: GPL-2.0-or-later AND EPL-2.0 AND BSD-3-Clause
+Package license: BSD-3-Clause
 
 Summary: Python interface for libheif library
 
