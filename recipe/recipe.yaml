@@ -17,7 +17,11 @@ build:
   skip:
     - match(python, "<3.9")
   script:
+    - if: win
+      then: if not exist "%LIBRARY_LIB%\libheif.lib" copy "%LIBRARY_LIB%\heif.lib" "%LIBRARY_LIB%\libheif.lib"
     - python -m pip install . -vv --no-deps --no-build-isolation
+    - if: win
+      then: if exist "%LIBRARY_LIB%\libheif.lib" del "%LIBRARY_LIB%\libheif.lib"
 
 requirements:
   build:
