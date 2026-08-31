@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pillow-heif
-  version: "1.5.0"
+  version: "1.6.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pillow_heif-${{ version }}.tar.gz
-  sha256: 16b11a37b762ff42da2d36527bb5cb14bd9194c24c389ee911155d6e23c53065
+  sha256: 5fb08da332fc44521611b646a3aa2f3455c14556c968a23723b76ec2ce8ade21
 
 build:
   number: 0
@@ -18,9 +18,9 @@ build:
     - match(python, "<3.10")
   script:
     - if: win
-      then: if not exist "%LIBRARY_LIB%\libheif.lib" copy "%LIBRARY_LIB%\heif.lib" "%LIBRARY_LIB%\libheif.lib"
-    - if: win
-      then: set "MSYS2_PREFIX=%LIBRARY_PREFIX%"
+      then:
+        - if not exist "%LIBRARY_LIB%\libheif.lib" copy "%LIBRARY_LIB%\heif.lib" "%LIBRARY_LIB%\libheif.lib"
+        - set "MSYS2_PREFIX=%LIBRARY_PREFIX%"
     - python -m pip install . -vv --no-deps --no-build-isolation
     - if: win
       then: if exist "%LIBRARY_LIB%\libheif.lib" del "%LIBRARY_LIB%\libheif.lib"
