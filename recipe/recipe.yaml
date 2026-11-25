@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pillow-heif
-  version: "1.8.1"
+  version: "1.9.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pillow_heif-${{ version }}.tar.gz
-  sha256: 521ebffb8a181d56c3904e5a61f20903edee0d9d3275967b8fb345f866215c06
+  sha256: 8a13d15106c9dbbd66a65966edee2ee0de3950c18dc3ea42912442cda803ea4c
 
 build:
-  number: 1
+  number: 0
   skip:
     - match(python, "<3.10")
   script:
